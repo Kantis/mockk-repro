@@ -9,7 +9,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.mockk", "mockk", "1.11.0")
+    testImplementation(files("mockk-1.11.1-SNAPSHOT.jar"))
+//    testImplementation("io.mockk", "mockk", "1.11.0")
     testImplementation("io.kotest", "kotest-runner-junit5-jvm", "4.6.0")
 }
 

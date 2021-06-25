@@ -1,4 +1,5 @@
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 import io.mockk.mockkStatic
 import kotlin.system.measureTimeMillis
 
@@ -12,7 +13,9 @@ class MyTest : FunSpec(
                 var logEveryReptition = false
                 var time = 0L
 
-                for (i in 1..1_000_000) {
+                var invocations = 0
+                for (i in 1..10_000_000) {
+                    invocations++
                     if (i % 10_000 == 0 || logEveryReptition) println("Invocation ${i - 1} finished in ${time}ms")
 
                     time = measureTimeMillis {
@@ -29,6 +32,8 @@ class MyTest : FunSpec(
                         break
                     }
                 }
+
+                invocations shouldBe 10_000_000
             }
         }
     }
